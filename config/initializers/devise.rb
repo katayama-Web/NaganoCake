@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-# Assuming you have not yet modified this file, each configuration option below
-# is set to its default value. Note that some are commented out while others
-# are not: uncommented lines are intended to protect your configuration from
-# breaking changes in upgrades (i.e., in the event that future versions of
-# Devise change the default values for those options).
-#
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -14,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'e1eb9ce16f8bccb5f4286ee0d3bf2336782780903e15e7ffefe826fec3b2699a7fbd3a55f29d510a92ee6c5d81479916ecb3ca09ff5c44205149b01843aa8833'
+  # config.secret_key = 'c063cd21d7bd8130c335ea977fc991cc0fe889292175bbc398faaa5200841ce0351c333255ab202e64fa3b7a929e7c766248856a3ebcfa4951d6db983fa4ddaa'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -74,10 +68,7 @@ Devise.setup do |config|
   # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:database]` will
-  # enable it only for database authentication.
-  # For API-only applications to support authentication "out-of-the-box", you will likely want to
-  # enable this with :database unless you are using a custom strategy.
-  # The supported strategies are:
+  # enable it only for database authentication. The supported strategies are:
   # :database      = Support basic authentication with authentication key + password
   # config.http_authenticatable = false
 
@@ -112,21 +103,18 @@ Devise.setup do |config|
   # config.reload_routes = true
 
   # ==> Configuration for :database_authenticatable
-  # For bcrypt, this is the cost for hashing the password and defaults to 12. If
+  # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
-  # The number of stretches used for generating the hashed password are stored
-  # with the hashed password. This allows you to change the stretches without
-  # invalidating existing passwords.
   #
   # Limiting the stretches to just one in testing will increase the performance of
   # your test suite dramatically. However, it is STRONGLY RECOMMENDED to not use
   # a value less than 10 in other environments. Note that, for bcrypt (the default
   # algorithm), the cost increases exponentially with the number of stretches (e.g.
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
-  config.stretches = Rails.env.test? ? 1 : 12
+  config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '8fe9712f2ffdc0dac31071b3a0127cdd8aa9258444a64f2316079aa1b76c0661c6ca9c92bb90fda923b0ded44efcd4abeef117dbcba030a8515f411f733fc530'
+  # config.pepper = 'da6038bdcdc9c04976f2331c59f7404ad1f1c8504274f4bbbac6a0182b9fe5b4def9c59ce40ebe0ee3b1c2462e30fcc7ef700bfc7e337bbec929e4e6158c7b8f'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -256,14 +244,14 @@ Devise.setup do |config|
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
-  # :html should redirect to the sign in page when the user does not have
+  # :html, should redirect to the sign in page when the user does not have
   # access, but formats like :xml or :json, should return 401.
   #
   # If you have any extra navigational formats, like :iphone or :mobile, you
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html, :turbo_stream]
+  # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -296,14 +284,12 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-  # ==> Hotwire/Turbo configuration
-  # When using Devise with Hotwire/Turbo, the http status for error responses
-  # and some redirects must match the following. The default in Devise for existing
-  # apps is `200 OK` and `302 Found respectively`, but new apps are generated with
-  # these new defaults that match Hotwire/Turbo behavior.
-  # Note: These might become the new default in future versions of Devise.
-  config.responder.error_status = :unprocessable_entity
-  config.responder.redirect_status = :see_other
+  # ==> Turbolinks configuration
+  # If your app is using Turbolinks, Turbolinks::Controller needs to be included to make redirection work correctly:
+  #
+  # ActiveSupport.on_load(:devise_failure_app) do
+  #   include Turbolinks::Controller
+  # end
 
   # ==> Configuration for :registerable
 
