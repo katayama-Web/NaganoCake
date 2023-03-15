@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root 'items#top'
+    get 'homes/about' => 'homes#about'
     get 'customers/mypage' => 'customers#show', as: 'mypage'
     get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
     patch 'customers/information' => 'customers#update', as: 'update_information'
@@ -35,7 +36,7 @@ Rails.application.routes.draw do
 
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show] do
-      resources :cart_items, only: [:create, :update, :destroy]
+    resources :cart_items, only: [:create, :update, :destroy]
     end
     resources :cart_items, only: [:index]
     resources :orders, only: [:new, :index, :create, :show]
